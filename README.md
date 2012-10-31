@@ -5,7 +5,7 @@ Attempt to create some *Matrix* code rain in `canvas`. See experiment write up [
 
 **See live demo [here](http://neilcarpenter.com/demos/canvas/matrix/)**
 
-Uses [stats.js](https://github.com/mrdoob/stats.js/) for the performance logging.
+Uses [stats.js](https://github.com/mrdoob/stats.js/) for the performance logging, and *Matrix* font is from [here](http://www.dafont.com/matrix-code-nfi.font).
 
 TO DO
 
