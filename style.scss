@@ -1,0 +1,114 @@
+@import url("http://fonts.googleapis.com/css?family=Carrois+Gothic");
+
+@font-face {
+  font-family: 'matrix-code';
+  src: url('font/matrix-code.eot?#iefix') format('embedded-opentype'), 
+       url('font/matrix-code.woff') format('woff'), 
+       url('font/matrix-code.ttf')  format('truetype'),
+       url('font/matrix-code.svg#svgFontName') format('svg');
+}
+
+html, body {
+    -webkit-font-smoothing: antialiased;
+    font: normal 12px/14px "Carrois Gothic", sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    color: #fff;
+
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none; 
+}
+
+body {
+  background: black;
+}
+
+#stats {
+    z-index: 100;
+}
+
+#info {
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    bottom: 0;
+    left: 0px;
+    width: 250px;
+    padding: 10px 20px 20px;
+    z-index: 100;
+    -webkit-transform-origin: bottom center;
+       -moz-transform-origin: bottom center;
+         -o-transform-origin: bottom center;
+            transform-origin: bottom center;
+    -webkit-transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+         -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-transition: -webkit-transform .5s ease-in-out;
+       -moz-transition:    -moz-transform .5s ease-in-out;
+         -o-transition:      -o-transform .5s ease-in-out;
+            transition:         transform .5s ease-in-out;
+}
+
+#info.closed {
+    -webkit-transform: rotate(180deg);
+       -moz-transform: rotate(180deg);
+         -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+}
+
+.toggle-info {
+    position: absolute;
+    display: block;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    width: 290px;
+    left: 0;
+    text-align: center;
+    padding: 3px 0 7px;
+    text-decoration: none;
+    color: white;
+    text-shadow: none;
+
+    &:hover {
+        background: rgb(0, 0, 0);
+    }
+}
+
+#close {
+    top: -20px;
+}
+
+#open {
+    bottom: -20px;
+    -webkit-transform: rotate(-180deg);
+       -moz-transform: rotate(-180deg);
+         -o-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+}
+
+button {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: 0;
+    border-radius: 2px;
+    padding: 7px 10px;
+    box-shadow: 0 0 3px 0px rgba(255,255,255, 0.3);
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+p a {
+    color: #fff;
+
+    &:hover {
+        color: #EFFDEB;
+        text-shadow: 0px 0px 5px #75AD61;
+    }
+}
