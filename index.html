@@ -13,6 +13,7 @@
 			<p><strong>Matrix code rain</strong></p> 
 			<p>Experiment write up <a href="http://neilcarpenter.com/labs/matrix-rain" target="_blank">here</a>.</p>
 			<button id="snapshot">Take snapshot</button>
+			<!-- <button id="enter">Enter</button> -->
 			
 			<a href="#" class="toggle-info" id="open">Show info</a>
 			<a href="#" class="toggle-info" id="close">Hide info</a>			
@@ -26,14 +27,17 @@
 		<script src="script.js"></script>
 
 			<script type="text/javascript">
-			    var _gaq = _gaq || [];
-			    _gaq.push(['_setAccount', 'UA-16253496-4']);
-			    _gaq.push(['_trackPageview']);
-			    (function() {
-			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			    })();
+				if (window.location.host.indexOf('local') !== 0) {
+				    var _gaq = _gaq || [];
+				    _gaq.push(['_setAccount', 'UA-16253496-4']);
+				    _gaq.push(['_trackPageview']);
+				    (function() {
+				    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				    })();
+				}
+
 			</script>
 		
 	</body>

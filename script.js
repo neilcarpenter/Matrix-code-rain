@@ -50,7 +50,8 @@ var M = {
 		CODE_LENGTH_PARAMS: {
 			min: 20,
 			max: 40
-		}
+		},
+		videoActive: false
 	},
 
 	animation: null,
@@ -60,6 +61,8 @@ var M = {
 
 	lineC: null,
 	ctx2: null,
+
+	video: null,
 
 	WIDTH: window.innerWidth,
 	HEIGHT: window.innerHeight,
@@ -211,10 +214,19 @@ var M = {
 
 		var velocity, height, x, y, c, ctx;
 
-		// slow fade BG colour
-		M.ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
-		M.ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-		M.ctx.fillRect(0, 0, M.WIDTH, M.HEIGHT);
+		if (!M.settings.videoActive) {
+			// slow fade BG colour
+			M.ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+			M.ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+			M.ctx.fillRect(0, 0, M.WIDTH, M.HEIGHT);
+		} else {
+			M.ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+			M.ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+			M.ctx.fillRect(0, 0, M.WIDTH, M.HEIGHT);
+			M.ctx.globalAlpha = 0.2;
+			M.ctx.drawImage(M.video, 0, 0, M.WIDTH, M.HEIGHT);
+			M.ctx.globalAlpha = 1;
+		}
 
 		M.ctx.globalCompositeOperation = 'source-over';
 
@@ -390,6 +402,26 @@ var M = {
 		return randomColumn;
 	},
 
+	getVideo: function () {
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+		window.URL = window.URL || window.webkitURL;
+
+		navigator.getUserMedia({video: true}, function(localMediaStream) {
+			M.video = document.createElement('video');
+			M.video.autoplay = true;
+			M.video.width = M.WIDTH;
+			M.video.src = window.URL.createObjectURL(localMediaStream);
+
+			M.HEIGHT = M.WIDTH * 0.75; // ratio
+			M.video.height = M.HEIGHT;
+
+			M.settings.videoActive = true;
+
+		}, function(error) {
+			console.log(error);
+		});
+	},
+
 	randomFromInterval: function(from, to) {
 		return Math.floor(Math.random() * (to - from+ 1 ) + from);
 	},
@@ -405,6 +437,7 @@ function eventListenerz() {
 	var controlToggles = document.getElementsByClassName('toggle-info');
 	var controls = document.getElementById('info');
 	var snapshotBtn = document.getElementById('snapshot');
+	// var enterBtn = document.getElementById('enter');
 
 	function toggleControls(e) {
 		e.preventDefault();
@@ -417,6 +450,7 @@ function eventListenerz() {
 
 	snapshotBtn.addEventListener('click', M.snapshot, false);
 
+	// enterBtn.addEventListener('click', M.getVideo, false);
 }
 
 window.onload = function() {
